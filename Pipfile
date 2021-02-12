@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+finviz = "==1.3.4"
+python-telegram-bot = "==13.1"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
