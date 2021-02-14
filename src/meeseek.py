@@ -14,6 +14,8 @@ class Meeseek:
         self.dp.add_handler(CommandHandler("stock", stock, pass_args=True))
         self.dp.add_handler(CommandHandler("company", company, pass_args=True))
         self.dp.add_handler(CommandHandler("forex", forex, pass_args=True))
+        self.dp.add_handler(CommandHandler("crypto", crypto, pass_args=True))
+        self.dp.add_handler(CommandHandler("news", news, pass_args=True))
         self.dp.add_error_handler(self.error)
 
     def run(self):
@@ -33,4 +35,4 @@ class Meeseek:
     def error(self, update, context):
         """Log Errors caused by Updates."""
         self.logger.warning('Update "%s" caused error "%s"', update, context.error)
-        update.message.reply_text("I'm sorry something went wrong. I couldn't find that ticker in finviz.")
+        update.message.reply_text("I'm sorry something went wrong in my internal process. Try another search.")

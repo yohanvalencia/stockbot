@@ -4,3 +4,4 @@ Dockerfile
 __pycache__/
 docker-compose.yaml
 .idea/
+build.sh
