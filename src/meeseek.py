@@ -16,6 +16,7 @@ class Meeseek:
         self.dp.add_handler(CommandHandler("forex", forex, pass_args=True))
         self.dp.add_handler(CommandHandler("crypto", crypto, pass_args=True))
         self.dp.add_handler(CommandHandler("news", news, pass_args=True))
+        self.dp.add_handler(CommandHandler("zacks", zacks, pass_args=True))
         self.dp.add_error_handler(self.error)
 
     def run(self):

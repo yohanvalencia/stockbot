@@ -84,3 +84,24 @@ def news(update, context):
         info_string = "Something went wrong while looking for news. Try again."
 
     update.message.reply_text(info_string)
+
+
+def zacks(update, context):
+    if len(context.args) == 1:
+        ticker = context.args[0].upper()
+        url_rank = f"https://quote-feed.zacks.com/index.php?t={ticker}"
+        url_score = f"https://www.zacks.com/stock/quote/{ticker}?q={ticker}"
+        zacks_rank = requests.get(url_rank, headers=headers).json()
+        raw_html = requests.get(url_score, headers=headers).text
+        style_score = scrap_zacks_score(raw_html=raw_html)
+
+        if len(zacks_rank) > 0 and len(style_score) > 0:
+            info_string = f"Company Name: {zacks_rank[ticker]['name']}\nZacks Rank: {zacks_rank[ticker]['zacks_rank']} ({zacks_rank[ticker]['zacks_rank_text']})\nStyle Score: {style_score}"
+        else:
+            info_string = "I couldn't find any news. Sorry."
+
+    else:
+
+        info_string = "Just one ticker at a time."
+
+    update.message.reply_text(info_string)

@@ -1,4 +1,5 @@
 import fnmatch
+from bs4 import BeautifulSoup
 
 
 def evaluate_coincidences(coincidences):
@@ -48,3 +49,9 @@ def crypto_rate(currency, rates):
 def crypto_matches(currency, exchanges):
     matches = [exchange['s'] for exchange in exchanges if fnmatch.fnmatch(exchange["s"], currency.upper())]
     return "\n".join(matches)
+
+
+def scrap_zacks_score(raw_html):
+    soup = BeautifulSoup(raw_html, 'html.parser')
+    zacks_score = soup.find("div", {"class": "zr_rankbox composite_group"}).findAll("p", {"class": "rank_view"})
+    return "".join(zacks_score[0].findAll(text=True))
