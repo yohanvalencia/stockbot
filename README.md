@@ -24,6 +24,8 @@ Don't forget to create your **.env** file
 
 /news    Top 5 news from yahoo finance. You can use the ticker or the company's
          fullname.
+         
+/zacks   Zacks investment Rank and Score based on ticker
 ```
 
 Feel free to help me build this funny bot.
